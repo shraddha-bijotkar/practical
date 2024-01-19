@@ -1,0 +1,38 @@
+<div>
+    <button [routerLink]="['signup']">Signup</button>
+</div>
+<div class="container">
+    <div>
+        <form [formGroup]="searchForm">
+            <input type="text" class="form-control" formControlName="search">
+            <button class="btn" (click)="search(searchForm)">Search Now!</button>
+        </form>
+        
+    </div>
+    <table class="table-responsive">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Username</td>
+        </tr>
+        <tr *ngFor="let user of users | search:searchForm.controls['search'].value">
+            <td>{{user.id}}</td>
+            <td>{{user.Name}}</td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            
+            <mat-paginator [length]="10"
+            [pageSize]="2"
+            [pageSizeOptions]="[2, 4, 10]"
+            aria-label="Select page"
+            (page)="paginator($event)">
+            
+            </mat-paginator>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <!-- <img app:Image [src]="/d" (error)="updateUrl($event)"> -->
+</div>
